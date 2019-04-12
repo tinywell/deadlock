@@ -1,0 +1,29 @@
+# Copyright IBM Corp. All Rights Reserved.
+# 
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+volumes:
+  deadlock: 
+
+# networks:
+#   default:
+#     external:
+#       name: net_deadlock
+
+services:
+
+  deadlock:
+    container_name: deadlock
+    image: deadlock/agent:1.0
+    tty: true
+    stdin_open: true
+    ports:
+      - 8010:8000
+      - 9060:6060
+    # environment:
+    #   - 
+    command: ["deadlock"]
+        
