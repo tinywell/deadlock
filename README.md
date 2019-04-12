@@ -33,3 +33,26 @@ created by net/http.(*Server).Serve
 	/usr/local/go/src/net/http/server.go:2884 +0x2f4
 ```
 
+
+## 服务启动
+- 容器方式
+```
+make docker
+
+cd ./example/docker
+docekr-compose up -d
+```
+
+- 本地服务
+```
+make go 
+cd ./build/bin
+./deadlock &
+```
+
+## 测试用客户端
+`./example/benchmark.go` 为测试用客户端
+示例：
+```
+go run benchmark.go -para 500 -count 600
+```
