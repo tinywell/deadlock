@@ -3,7 +3,7 @@ BUILDBIN = ./build/bin
 BUILDDOCKER = ./build/docker
 BIN = deadlock
 
-IMAGETAG = 1.0
+IMAGETAG = 2.0
 DOCKERTAG = deadlock/agent:$(IMAGETAG)
 
 .PHONY: go

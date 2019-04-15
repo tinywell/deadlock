@@ -36,28 +36,19 @@ func (h *ConsumeHandler) HandlerMsg(recvChan <-chan hlserver.RecvData) {
 }
 
 func (h *ConsumeHandler) Handle(data hlserver.QIData) *hlserver.RspData {
-	return h.HandlerByTranCode(data)
-}
-
-func (h *ConsumeHandler) HandlerByTranCode(data hlserver.QIData) *hlserver.RspData {
 	zap.L().Named("handler").Info("Handle Message Start")
 	defer zap.L().Named("handler").Info("Handle Message End")
-	switch data.TranCode {
-	case "HLF20":
-		return h.handlePutRatio(data)
-	}
-	zap.L().Named("handler").Warn("trancode not supported", zap.String("trancode", data.TranCode))
-	return hlserver.CommonRspWithError(fmt.Errorf("error trancode :%s", data.TranCode))
-}
 
-func (h *ConsumeHandler) handlePutRatio(qidata hlserver.QIData) *hlserver.RspData {
-	zap.L().Named("handler").Info("Handle PutRatio", zap.String("messageid", qidata.MessageID), zap.String("trancode", qidata.TranCode))
+	zap.L().Named("handler").Info("Handle PutRatio", zap.String("messageid", data.MessageID), zap.String("trancode", data.TranCode))
 	defer zap.L().Named("handler").Info("Handle PutRatio End")
 
-	msg, err := json.Marshal(qidata.TranData)
+	msg, err := json.Marshal(data.TranData)
 	if err != nil {
 		return hlserver.CommonRspWithError(fmt.Errorf("marshal trandata error: %s", err.Error()))
 	}
 	return h.hlf.TransactionInvoke("mychannel", "kyc", "putratio",
-		string(msg), qidata.Crypto, qidata.Members)
+		string(msg), data.Crypto, data.Members)
+
+	zap.L().Named("handler").Warn("trancode not supported", zap.String("trancode", data.TranCode))
+	return hlserver.CommonRspWithError(fmt.Errorf("error trancode :%s", data.TranCode))
 }
