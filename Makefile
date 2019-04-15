@@ -9,6 +9,7 @@ DOCKERTAG = deadlock/agent:$(IMAGETAG)
 .PHONY: go
 go:
 	go build -o $(BUILDBIN)/$(BIN)
+	go build -o $(BUILDBIN)/benchmark example/http/benchmark.go
 
 .PHONY: linux
 linux:

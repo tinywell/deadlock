@@ -7,6 +7,7 @@ COPY hlserver hlserver
 COPY handler handler
 COPY zaplog zaplog
 COPY mockhl mockhl
+COPY example example
 COPY Makefile Makefile
 COPY main.go main.go
 COPY go.mod go.mod
@@ -20,6 +21,7 @@ RUN apk add --no-cache \
     bash;
 RUN mkdir -p /etc/agent/
 COPY --from=builder /deadlock/agent/build/bin/deadlock /usr/local/bin/
+COPY --from=builder /deadlock/agent/build/bin/benchmark /usr/local/bin/
 
 WORKDIR /etc/agent/
 EXPOSE 8000
