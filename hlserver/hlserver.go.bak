@@ -1,9 +1,0 @@
-package hlserver
-
-// HLServer fabric 客户端通用接口
-type HLServer interface {
-	// ReceiveRequest 接收业务请求，并将收到的请求数据通过 recvchan 传递给 handler 处理
-	ReceiveRequest(recvchan chan<- *RecvData)
-	// SendEvent 将收到的 event 数据发送给应用端，事件由 handler 通过 chan<- *hs.EventData 传递过来
-	SendEvent() chan<- *EventData
-}

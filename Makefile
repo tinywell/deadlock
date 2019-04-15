@@ -17,7 +17,7 @@ linux:
 
 .PHONY: docker
 docker: 
-	docker build -f images/Dockerfile -t $(DOCKERTAG) .
+	docker build -f Dockerfile -t $(DOCKERTAG) .
 
 .PHONY: clean
 clean:

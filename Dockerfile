@@ -5,11 +5,11 @@ WORKDIR /deadlock/agent/
 RUN cd /deadlock/agent/ && mkdir -p build
 COPY hlserver hlserver
 COPY handler handler
-COPY zaplog zaplog
-COPY mockhl mockhl
+COPY zaplog zaplop
 COPY example example
 COPY Makefile Makefile
 COPY main.go main.go
+COPY Dockerfile Dockerfile
 COPY go.mod go.mod
 COPY go.sum go.sum
 RUN make go
@@ -27,5 +27,5 @@ WORKDIR /etc/agent/
 EXPOSE 8000
 EXPOSE 6060
 
-CMD ["kyc"]
+CMD ["deadlock"]
 
