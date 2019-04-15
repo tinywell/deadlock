@@ -100,7 +100,7 @@ func InitLog(cfg LogConfig) {
 		Development:      false,
 		Encoding:         "console",
 		EncoderConfig:    encoder,
-		OutputPaths:      []string{"stderr", filePath},
+		OutputPaths:      []string{"stderr"},
 		ErrorOutputPaths: []string{"stderr"},
 	}
 	parentLogger, err = zapConfig.Build()

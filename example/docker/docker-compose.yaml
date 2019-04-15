@@ -21,8 +21,8 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - 8010:8000
-      - 9060:6060
+      - 8000:8000
+      - 6060:6060
     # environment:
     #   - 
     command: ["deadlock"]
