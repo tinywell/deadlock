@@ -17,7 +17,7 @@ services:
 
   deadlock:
     container_name: deadlock
-    image: deadlock/agent:1.0
+    image: deadlock/agent:2.0
     tty: true
     stdin_open: true
     ports:

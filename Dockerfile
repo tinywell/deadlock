@@ -5,7 +5,7 @@ WORKDIR /deadlock/agent/
 RUN cd /deadlock/agent/ && mkdir -p build
 COPY hlserver hlserver
 COPY handler handler
-COPY zaplog zaplop
+COPY zaplog zaplog
 COPY example example
 COPY Makefile Makefile
 COPY main.go main.go

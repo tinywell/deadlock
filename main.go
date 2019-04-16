@@ -1,7 +1,6 @@
 package main
 
 import (
-	"deadlock/zaplog"
 	"fmt"
 
 	"go.uber.org/zap"
@@ -12,6 +11,7 @@ import (
 	"deadlock/handler"
 	hs "deadlock/hlserver"
 	"deadlock/hlserver/restful"
+	"deadlock/zaplog"
 )
 
 const (
